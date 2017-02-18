@@ -18,7 +18,9 @@ defmodule Processes do
   end
 
   koan "New processes are spawned functions" do
-    pid = spawn(fn -> nil end)
+    pid = spawn(fn -> receive do
+                      end
+                end)
 
     assert Process.alive?(pid) == ___
   end
