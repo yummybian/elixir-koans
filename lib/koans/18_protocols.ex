@@ -34,17 +34,17 @@ defmodule Protocols do
     musician = %Musician{name: "Andre", instrument: "violin"}
     dancer = %Dancer{name: "Darcy", dance_style: "ballet"}
 
-    assert School.enrol(musician) == ___
-    assert School.enrol(dancer) == ___
+    assert School.enrol(musician) == "Andre signed up for violin"
+    assert School.enrol(dancer) == "Darcy enrolled for ballet"
   end
 
   koan "Sometimes we all use the same" do
     student = %Student{name: "Emily"}
-    assert School.enrol(student) == ___
+    assert School.enrol(student) == "Pupil enrolled at school"
   end
 
   koan "If you don't comply you can't get in" do
-    assert_raise ___, fn ->
+    assert_raise Protocol.UndefinedError, fn ->
       School.enrol(%Baker{name: "Delia"})
     end
   end
